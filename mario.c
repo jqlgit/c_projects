@@ -18,7 +18,7 @@ int get_size(void)
         n = get_int("Size: ");
     }
     while (n < 1);
-    return n
+    return n;
 }
 
 string print_grid(void)
