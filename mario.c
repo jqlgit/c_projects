@@ -1,6 +1,9 @@
 #include <stdio.h>
 #include <cs50.h>
 
+int get_size(void);
+void print_grid(int size);
+
 int main(void)
 {
     // get size of grid
