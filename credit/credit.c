@@ -4,6 +4,6 @@
 //string check_sum(long number)
 int main(void)
 {
-    int x = 1920;
-    printf(x[0]);
+    string x = "1920";
+    printf()
 }
