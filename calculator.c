@@ -8,5 +8,5 @@ int main(void)
 
     double z = (double) x/y;
 
-    printf("%.20f\n", z);
+    printf("%.20fd\n", z);
 }
