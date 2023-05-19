@@ -5,5 +5,5 @@
 int main(void)
 {
     char x[] = "1920";
-    printf(x[0]);
+    printf(%s, x[0]);
 }
