@@ -12,7 +12,7 @@ int get_card_length(long long card_number)
     return length;
 }
 
-bool is_valid_checksum(long long card_number, int length)
+bool is_valid_checksum(long long n)
 {
    int sum1 = 0;
    int sum2 = 0;
@@ -78,7 +78,7 @@ int main(void)
     long long card_number = get_long("Number: ");
     int length = get_card_length(card_number);
 
-    if (is_valid_checksum(card_number, length))
+    if (is_valid_checksum(card_number))
     {
         string card_type = get_card_type(card_number, length);
         printf("%s\n", card_type);
