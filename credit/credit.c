@@ -44,6 +44,7 @@ string get_card_type(long long card_number, int length)
 
     if ((length == 15) && (second_digit == 34 || second_digit == 37))
     {
+        printf("test amex");
         return "AMEX";
     }
     else if ((length == 16) && (second_digit >= 51 && second_digit <= 55))
