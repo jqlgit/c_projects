@@ -39,8 +39,8 @@ bool is_valid_checksum(long long card_number, int length)
 
 string get_card_type(long long card_number, int length)
 {
-    int first_digit = card_number / 10;
-    int second_digit = card_number / 100;
+    int first_digit = card_number % 10;
+    int second_digit = card_number % 100;
 
     if ((length == 15) && (second_digit == 34 || second_digit == 37))
     {
