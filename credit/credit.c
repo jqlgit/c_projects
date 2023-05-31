@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <cs50.h>
+#include <math.h>
 
 int get_card_length(long long card_number)
 {
@@ -39,12 +40,11 @@ bool is_valid_checksum(long long card_number, int length)
 
 string get_card_type(long long card_number, int length)
 {
-    int first_digit = card_number % 10;
-    int second_digit = card_number % 100;
+    int first_digit = card_number / (int)pow(10, length - 1);
+    int second_digit = card_number / (int)pow(10, length - 2);
 
     if ((length == 15) && (second_digit == 34 || second_digit == 37))
     {
-        printf("test amex");
         return "AMEX";
     }
     else if ((length == 16) && (second_digit >= 51 && second_digit <= 55))
@@ -60,6 +60,7 @@ string get_card_type(long long card_number, int length)
         return "INVALID";
     }
 }
+
 
 int main(void)
 {
