@@ -11,3 +11,9 @@
         cc = cc / 10;
         i++;
     }
+ // Check if length is valid
+    if (i != 13 && i != 15 && i != 16)
+    {
+        printf("INVALID\n");
+        return 0;
+    }
