@@ -1,80 +1,79 @@
 #include <stdio.h>
 #include <cs50.h>
 
-// Get card number
-    long n = get_long("Number: ");
-    // Count length
-    int i = 0;
-    long cc = n;
-    while (cc > 0)
+int get_card_length(long long card_number)
+{
+    int length = 0;
+    while (card_number > 0)
     {
-        cc = cc / 10;
-        i++;
+        card_number /= 10;
+        length++;
     }
+    return length;
+}
 
- // Check if length is valid
-    if (i != 13 && i != 15 && i != 16)
+bool is_valid_checksum(long long card_number, int length)
+{
+    int sum = 0;
+    bool multiply = false;
+    
+    while (card_number > 0)
     {
-        printf("INVALID\n");
-        return 0;
+        int digit = card_number % 10;
+        if (multiply)
+        {
+            digit *= 2;
+            sum += digit / 10 + digit % 10;
+        }
+        else
+        {
+            sum += digit;
+        }
+        
+        card_number /= 10;
+        multiply = !multiply;
     }
+    
+    return sum % 10 == 0;
+}
 
-// Calculate checksum
-    int sum1 = 0;
-    int sum2 = 0;
-    long x = n;
-    int total = 0;
-    int mod1;
-    int mod2;
-    int d1;
-    int d2;
-    do
+string get_card_type(long long card_number, int length)
+{
+    int first_digit = card_number / 10;
+    int second_digit = card_number / 100;
+    
+    if ((length == 15) && (second_digit == 34 || second_digit == 37))
     {
-        // Remove last digit and add to sum1
-        mod1 = x % 10;
-        x = x / 10;
-        sum1 = sum1 + mod1;
-        // Remove second last digit
-        mod2 = x % 10;
-        x = x / 10;
-        // Double second last digit and add digits to sum2
-        mod2 = mod2 * 2;
-        d1 = mod2 % 10;
-        d2 = mod2 / 10;
-        sum2 = sum2 + d1 + d2;
+        return "AMEX";
     }
-    while (x > 0);
-    total = sum1 + sum2;
+    else if ((length == 16) && (second_digit >= 51 && second_digit <= 55))
+    {
+        return "MASTERCARD";
+    }
+    else if ((length == 13 || length == 16) && (first_digit == 4))
+    {
+        return "VISA";
+    }
+    else
+    {
+        return "INVALID";
+    }
+}
 
-// Next check Luhn Algorithm
-    if (total % 10 != 0)
+int main(void)
+{
+    long long card_number = get_long("Number: ");
+    int length = get_card_length(card_number);
+    
+    if (is_valid_checksum(card_number, length))
     {
-        printf("INVALID\n");
-        return 0;
-    }
-
-// Get starting digits
-    long start = n;
-    do
-    {
-        start = start / 10;
-    }
-    while (start > 100);
-
-// Next check starting digits for card type
-    if ((start / 10 == 5) && (0 < start % 10 && start % 10 < 6))
-    {
-        printf("MASTERCARD\n");
-    }
-    else if ((start / 10 == 3) && (start % 10 == 4 || start % 10 == 7))
-    {
-        printf("AMEX\n");
-    }
-    else if (start / 10 == 4)
-    {
-        printf("VISA\n");
+        string card_type = get_card_type(card_number, length);
+        printf("%s\n", card_type);
     }
     else
     {
         printf("INVALID\n");
     }
+    
+    return 0;
+}
