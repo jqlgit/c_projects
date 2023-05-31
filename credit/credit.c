@@ -52,10 +52,12 @@ string get_card_type(long long card_number, int length)
     }
     else if ((length == 13 || length == 16) && (first_digit == 4))
     {
+        printf("testcard");
         return "VISA";
     }
     else
     {
+        printf("testcard2");
         return "INVALID";
     }
 }
@@ -72,6 +74,7 @@ int main(void)
     }
     else
     {
+        printf("test");
         printf("INVALID\n");
     }
 
