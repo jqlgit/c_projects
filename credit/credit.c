@@ -1,5 +1,7 @@
 #include <stdio.h>
 
+//Diciphers the type of credit card and its validity based on Luhn's Algorithm
+
 int main(void)
 {
     // Get card number
