@@ -1,7 +1,8 @@
 #include <stdio.h>
 #include <cs50.h>
 
-
+int main(void)
+{
 // Get card number
    long n = get_long("Number: ");
    // Count length
@@ -84,3 +85,4 @@
    {
        printf("INVALID\n");
    }
+}
