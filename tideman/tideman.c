@@ -3,6 +3,9 @@
 #include <stdlib.h>
 #include <string.h>
 
+// SUMMARY: Computes the winner of a tideman voting system
+// By: Justin Li
+
 // Max number of candidates
 #define MAX 9
 
