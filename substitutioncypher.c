@@ -2,7 +2,7 @@
 #include <string.h> // for strlen()
 #include <ctype.h> // for string operation upper, lower
 
-# Computes a cyphered text based on user-provided encryption pattern.
+# Summary: Computes a cyphered text based on user-provided encryption pattern.
 
 void Do_substitute(char* key); // for further substitute
 void alpha_arr_val(char pos, char* key);
