@@ -2,6 +2,8 @@
 #include <string.h> // for strlen()
 #include <ctype.h> // for string operation upper, lower
 
+# Computes a cyphered text based on user-provided encryption pattern.
+
 void Do_substitute(char* key); // for further substitute
 void alpha_arr_val(char pos, char* key);
 // to get the alphabet array value of each plain text element (ex:plaintext = h|alphabet array = 8 {a=0, b=1 .....z=26})
